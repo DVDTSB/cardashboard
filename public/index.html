@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Serial Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="row top">
+      <div class="controls panel">
+        <label>Serial Port: <select id="portSelect"></select></label>
+      </div>
+      <div class="status disconnected" id="status">Disconnected</div>
+      <div class="section"></div>
+      <div class="panel" style="display: flex; gap: 20px;">
+        <div>Time Since Last: <span id="timeSinceLastLap">--</span></div>
+        <div>Last Lap: <span id="lastLapTime">--</span></div>
+        <div>Fastest: <span id="fastestLapTime">--</span></div>
+        <div>Average: <span id="averageLapTime">--</span></div>
+      </div>
+      <div class="panel">
+        Speed Setting: <span id="speedSetting">--</span>
+      </div>
+      <div class="panel">
+        Time: <span id="currentTime">--</span>
+      </div>
+
+    </div>
+
+    <div class="row charts">
+      <div class="chart-container panel">
+        <div style="display: flex; justify-content: space-between; align-items: start;">
+          <div>
+            <h3 style="margin: 0 0 10px 0;">Speed <span class="stat-value" id="speedValue">--</span></h3>
+          </div>
+        </div>
+        <canvas id="speedChart"></canvas>
+      </div>
+
+      <div class="chart-container panel">
+        <div style="display: flex; justify-content: space-between; align-items: start;">
+          <div>
+            <h3 style="margin: 0 0 10px 0;">Battery <span class="stat-value" id="batteryValue">--</span></h3>
+          </div>
+        </div>
+        <canvas id="batteryChart"></canvas>
+      </div>
+    </div>
+
+    <div class="row bottom">
+      <div class="section panel">
+        <h3>Serial Data Log</h3>
+        <div id="serialLog"></div>
+        <button onclick="clearSerialLog()">Clear Log</button>
+      </div>
+
+      <div class="section panel">
+        <h3>Notifications</h3>
+        <div id="notificationsList"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notifications" id="notifications"></div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
