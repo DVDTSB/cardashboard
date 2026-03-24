@@ -1,3 +1,4 @@
+![ss](image.png)
 asa gen
 
 protocoul e bazat pe datele primite de la serial
